@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="URF-8">
+	<title>Projekat</title>
+	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,800,900&display=swap" rel="stylesheet">
+	
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		*, *:before, *:after {
+			box-sizing: inherit;
+		}
+
+		html {
+			font-family: 'Montserrat', sans-serif;
+			font-size: 10px;
+			color: #333;
+			box-sizing: border-box;
+		}
+
+		body {
+			overflow-x: hidden;
+		}
+
+		header {
+			width: 100%;
+			height: 100vh;
+			position: relative;
+		}
+
+		a {
+			text-decoration: none;
+			color: inherit;
+		}
+
+		img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+        }
+
+		.menu-toggle {
+			width: 5rem;
+			height: 5rem;
+			position: absolute;
+			top: 1rem;
+			left: 1rem;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+			outline: none;
+			display: none;
+			z-index: 999;
+		}
+
+		.menu-toggle i, .fa-times {
+			font-size: 3.5rem;
+		}
+
+		.fa-times {
+			display: none;
+			cursor: pointer;
+		}
+
+		nav {
+			position: relative;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			border-bottom: 1px solid rgba(0,0,0,.075);
+			z-index: 1000;
+		}
+
+		.logo {
+			width: 15rem;
+			box-sizing: content-box;
+			padding-left: 3rem;
+		}
+
+		.logo img {
+			display: block;
+			width: 100%;
+		}
+
+		nav ul {
+			height: 8rem;
+			list-style: none;
+			display: flex;
+			font-size: 1.6rem;
+		}
+
+		nav ul li {
+			padding: 0 3rem;
+			line-height: 8rem;
+			transition: background-color .5s;
+		}
+
+		nav ul li:hover {
+			background-color: rgba(0,0,0,.075);
+		}
+
+		.nav-right ul li {
+			border-right: 1px solid rgba(0,0,0,.075);
+		}
+
+		.nav-rigt ul li:nth-child(1) {
+			border-left: 1px solid rgba(0,0,0,.075);
+		}
+
+		.nav-right ul li:last-child {
+			border-right: none;
+		}
+
+		.nav-right i {
+			margin-left: 1rem;
+		}
+
+		.nav-right i:first-child {
+			margin-right: 0;
+		}
+
+		.main {
+			position: absolute;
+			display: flex;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+		}
+
+		.tone-1 {
+			background-color: #f7f7f6;
+			height: 100vh;
+			flex: 1;
+
+		}
+
+		.tone-2 {
+			background-color: #f7f7f6;
+			height: 100vh;
+			flex: 1;
+			position: relative; 
+			background-image: url('bg.svg');
+			background-size: cover;
+			background-repeat: no-repeat;
+		}
+
+
+		.tone-2 img {
+			width: 100%;
+			position: absolute;
+			top: 50%;
+			left: -15rem;
+			transform: translateY(-50%);
+		}
+
+		.product-info {
+			display: flex;
+			width: 90%;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			margin: 0 auto;
+			height: 100%;
+		}
+
+		.product-info h1 {
+			font-size: 8rem;
+			font-family: 'Montserrat', sans-serif;
+			letter-spacing: 3px;
+			margin-right: -3px;
+			font-weight : 900;
+			margin-bottom: 1rem;
+			text-align: center;
+			color: #3430AF;
+		}
+
+		.product-info p {
+			font-size: 1.8rem;
+			margin-bottom: 4rem;
+		}
+
+		.product-info h2 {
+			font-size: 2.5rem;
+			margin-bottom: 5rem;
+		}
+
+		.product-info h3 {
+			font-size: 2rem;
+			text-transform: uppercase;
+		}
+
+		.btn {
+			display: flex;
+			padding: 2rem;
+			color: #f7f7f6;
+			font-size: 1.5rem;
+			font-weight: 500;
+			transition: all .5s;
+		}
+
+		.info-btns {
+			display: flex;
+		}
+
+		.discover-btn {
+			background-color: #a4a4a4;
+		}
+
+		.cart-btn {
+			background-color: #141110;
+		}
+
+		.discover-btn:hover, .cart-btn:hover {
+			box-shadow: 3px 1rem 2rem rgba(0,0,0,.3);
+			transform: translateY(-1rem);
+		}
+
+		@media screen and (max-width: 1200px) {
+			.tone-2 img {
+				left: -8rem;
+			}
+
+			.product-info h1 {
+				font-size: 3.5rem;
+				margin-bottom: 2rem;
+			}
+
+			.product-info p {
+				font-size: 1.5rem;
+				margin-bottom: 2rem;
+			}
+
+			.product-info h2 {
+				font-size: 2rem;
+				margin-bottom: 1rem;
+			}
+
+			.btn {
+				padding: 1.5rem;
+				font-size: 1rem;
+			}
+		}
+
+		@media screen and (max-width: 900px) {
+			
+			.logo {
+				padding-left: 1.5rem;
+			}
+
+			nav ul {
+				height: 5rem;
+				font-size: 1.4rem;
+			}
+
+			nav ul li {
+				padding: 0 1.5rem;
+				line-height: 5rem;
+			}
+
+			.tone-2 img {
+				left: 0.6rem;
+			}
+		}
+
+		@media screen and (max-width: 600px) {
+
+
+			.tone-2 img {
+				left: 0.6rem;
+			}
+
+			.product-info p {
+				font-size: 1.2rem;
+			}
+			.btn {
+				padding: 1rem;
+			}
+
+			nav {
+				display: flex;
+				border-bottom: none;
+				flex-direction: column;
+				width: 25rem;
+				height: auto;
+				background-color: #f7f7f6;
+				justify-content: space-around;
+				transform: translateX(-25rem);
+				transition: transform .5s;
+			}
+
+			nav ul {
+				height: initial;
+				display: block;
+				font-size: 2rem;
+				text-align: center;
+			}
+
+			nav ul li {
+				padding: 0;
+				line-height: initial;
+				margin-bottom: 2rem;
+			}
+
+			.logo {
+				padding: 0;
+			}
+
+			.nav-right ul li, .nav-right ul li:nth-child(1) {
+				border:none;
+			}
+
+			.menu-toggle {
+				display: flex;
+			}
+
+			.fa-times {
+				display: block;
+				position: absolute;
+				top: 2rem;
+				right: 2rem;
+			}
+
+			.active {
+				transform: translateX(0);
+			}
+
+			.overlay {
+				position: absolute;
+				width: 0;
+				height: 100vh;
+				background-color: rgba(0,0,0,.8);
+				z-index: 998;
+				opacity: 0;
+				transition: opacity .5s;
+			}
+
+			.overlay-menu-open {
+				width: 100%;
+				opacity: 1;
+			}
+
+		}
+
+	
+
+		@media screen and (max-width: 400px){
+			.main {
+				flex-direction: column;
+			}
+
+			.tone-2 img {
+				left: 0.6rem;
+			}
+
+			.product-info h1 {
+				font-size: 2rem;
+				margin-bottom: 1rem;
+			}
+
+			.product-info p {
+				font-size: 1rem;
+				margin-bottom: 1rem;
+			}
+
+			.product-info h2 {
+				font-size: 1.5rem;
+				margin-bottom: 1rem;
+			}
+
+			.btn {
+				padding: .7rem;
+				font-size: .8rem;
+			}
+		}
+
+			section {
+			padding: 5rem 0;
+			background-color: #f7f7f6;
+		}
+
+		.heading {
+			text-transform: uppercase;
+			font-size: 3.5rem;
+			letter-spacing: 3px;
+			margin-right: -3px;
+			margin-bottom: 5rem;
+			text-align: center;
+			color: #333;
+			position: relative;
+		}
+
+		.heading::after {
+			content: "";
+			width: 10rem;
+			height: .8rem;
+			background-color: #141110;
+			position: absolute;
+			bottom: -2rem;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+
+		.card-wrapper {
+			display: flex;
+			align-items: center;
+			align-content: center;
+			flex-direction: column;
+		}
+
+		.card {
+			width: 32rem;
+			background-color: #fff;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			margin: 2rem 0;
+			box-shadow: .5rem .5rem 3rem rgba(0,0,0,0.2);
+			padding: 30px;
+		}
+
+		.card .card-img {
+			width: 100%;
+			height: 26rem;
+			object-fit: cover;
+
+		}
+
+		.profile-img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+
+		.card h1 {
+			font-size: 2.2rem;
+			color: #333;
+			margin: 1.5rem;
+			font-weight: 600;
+		}
+
+		.bike-category {
+			color: #777;
+			font-size: 1.5rem;
+			font-weight: 300;
+		}
+
+		.about{
+			font-size: 1.5rem;
+			margin: 1.5rem 0;
+			color: #333;
+			font-family: 'Raleway', sans-serif;
+		}
+
+		.btn1 {
+			padding: 1rem 2.5rem;
+			background-color: #a4a4a4;
+			margin: 1rem 0;
+			text-transform: uppercase;
+			color: #eee;
+			font-size: 1.4rem;
+			transition: all .5s;
+		}
+
+		.btn1:hover {
+			transform: translateY(-2px);
+			box-shadow: .5rem .5rem 2rem rgba(0,0,0,.2);
+		}
+
+		.btn1:active {
+			transform: translateY(0);
+			box-shadow: none;
+		}
+
+		@media screen and (min-width: 700px){
+
+
+
+			.card-wrapper {
+				flex-direction: row;
+				flex-wrap: wrap;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.card {
+				margin: 2rem;
+			}
+
+			}
+		}
+
+		.global-cont {
+			display: flex;
+			align-items: center;
+			justify-content: center;padding-top: 10px;
+
+		}
+
+		.footer-main-div {
+			width: 100%;
+			height: auto;
+			margin: auto;
+			background-color: #f7f7f6;
+			padding: 20px 0px;
+		}
+
+		.footer-social-icons {
+			width: 100%;
+			height: auto;
+			margin: auto;
+		}
+
+		.footer-social-icons ul {
+			margin: 0px;
+			padding: 0px;
+			text-align: center;
+		}
+
+		.footer-social-icons ul li {
+			display: inline-block;
+			width: 50px;
+			height: 50px;
+			margin: 0 10px;
+		}
+
+		.footer-social-icons ul li a {
+			color: #272727;
+			font-size: 25px;
+		}
+
+		.footer-social-icons ul li a i {
+			line-height: 50px;
+		}
+
+		.footer-menu {
+			width: 100%;
+			height: auto;
+			margin: auto;
+			margin-top: 20px;
+		}
+
+		.footer-menu ul {
+			margin: 0px;
+			padding: 0px;
+			text-align: center;
+		}
+
+		.footer-menu ul li {
+			display: inline-block;
+			margin: 0px 15px;
+		}
+
+		.footer-menu ul li a {
+			font-size: 1.5rem;
+			color: #272727;
+		}
+
+		.footer-bottom {
+			width: 100%;
+			height: auto;
+			margin: auto;
+			background: #272727;
+			padding: 10px;
+		}
+
+		.footer-bottom p{
+			font-family: 'Montserrat', sans-serif;
+			font-size: 1.5rem;
+			text-align: center;
+			color: #f7f7f6;
+		}
+
+		.footer-bottom p a {
+			color: #f7f7f6;
+			font-weight: 700;
+		}
+
+		.subscribe-form {
+			width: 100%;
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background: #272727;
+		}
+
+		.subscribe-form .subscribe {
+			background-color: #fff;
+			padding: 40px;
+			width: 100%;
+			max-width: 500px;
+			min-width: 200px;
+			text-align: center;
+			box-shadow: .5rem .5rem 3rem rgba(255,255,255,0.2);
+		}
+
+		.subscribe-form .subscribe header h1 {
+			font-size: 230%;
+			margin-top: 0;
+		}
+
+		.subscribe-form .subscribe section {
+			font-size: 15px;
+			color: #eee;
+		}
+
+		.subscribe-form .subscribe footer {
+			padding: 15px;
+		}
+
+		.subscribe-form .subscribe footer input {
+			border: unset;
+			background-color: #f7f7f6;
+			padding: 2rem;
+			width: 230px;
+			font-size: 1.5rem;
+			font-family: 'Raleway', sans-serif;
+		}
+
+		.subscribe-form .subscribe footer button {
+			border: unset;
+			padding: 2rem;
+			color: #f7f7f6;
+			font-size: 1.5rem;
+			font-weight: 500;
+			transition: all .5s;
+			font-family: 'Montserrat', sans-serif;
+			text-transform: uppercase;
+			cursor: pointer;
+		}
+
+		.subscribe-form .subscribe input:focus, .subscribe-form .subscribe button:focus {
+			outline: none;
+		}
+
+		@media screen and (max-width:720px) {
+			.main {
+				flex-direction: column;
+			}
+
+			tone-2 img {
+				left: 0.6px;
+			}
+
+			nav ul li {
+				font-size: 1rem;
+			}
+
+
+			.tone-2 {
+				background-size: auto;
+				background-repeat: no-repeat;
+			}
+			.subscribe-form .subscribe {
+				margin: 0 2rem;
+				padding: 1.5rem;
+			}
+			.subscribe-form .subscribe footer input {
+				width: 20rem;
+				margin-bottom: 10px;
+			}
+
+			.subscribe-form .subscribe header h1 {
+				font-size: 1.5rem;
+			}
+		}
+
+	</style>
+
+
+	
+
+</head>
+<body>
+	<header>
+		<div class="menu-toggle">
+			<i class="fas fa-bars"></i>
+		</div>
+		<div class="overlay"></div>
+
+		<nav>
+			<i class="fas fa-times"></i>
+			<div class="logo">
+				<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/2018_Trek_logo_word_mark_wiki.svg/1280px-2018_Trek_logo_word_mark_wiki.svg.png" align="trek logo";">
+			</div>
+
+			<div class="nav-middle">
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="#">Bikes</a></li>
+					<li><a href="#">Equipment</a></li>
+					<li><a href="about.html">Our story</a></li>
+					<li><a href="#">Contact</a></li>
+				</ul>
+			</div>
+
+			<div class="nav-right">
+				<ul>
+					<li><a href="#"><i class="fas fa-search"></i></a></li>
+					<li><a href="login-form.html"><i class="fas fa-user"></i> Account</a></li>
+					<li><a href="#"><i class="fas fa-cart"></i> Cart</a></li>
+				</ul>
+			</div>
+		</nav>
+
+		<div class="main">
+			<div class="tone-1">
+				<div class="product-info">
+					<h3>Top offer</h3>
+					<h1>POLICE</h1>
+					<p>Just tryin' catch you</p>
+					<h2>$1,369.99</h2>
+					<div class="info-btns">
+						<a href="#" class="btn discover-btn">DISCOVER</a>
+						<a href="#" class="btn cart-btn">ADD TO CART</a>
+					</div>
+				</div>
+
+
+
+
+			</div>
+
+			<div class="tone-2">
+				<img src="https://trek.scene7.com/is/image/TrekBicycleProducts/1046600_2018_A_2_Police?wid=1200&hei=1200&fit=fit,1&fmt=png-alpha&op_usm=0,0,0,0&iccEmbed=0&extend=24,324,144,188" alt="bike">
+
+			</div>
+
+		</div>
+
+	</header>
+
+
+<section>
+		<div class="container">
+			<h1 class="heading">Bikes</h1>
+			<div class="card-wrapper">
+				<div class="card">
+					<img src="https://trek.scene7.com/is/image/TrekBicycleProducts/Supercaliber97_20_28588_A_Primary?$responsive-pjpg$&wid=1920&hei=1440" alt="profile image" class="profile-img">
+					<h1>Supercaliber 9.7</h1>
+					<p class="bike-category">$4,799.99</p>
+					<p class="about">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+					</p>
+					<a href="#" class="btn1">Learn more</a>
+				</div>
+
+				<div class="card">
+					<img src="https://trek.scene7.com/is/image/TrekBicycleProducts/EmondaALR4Disc_20_28953_A_Primary?$responsive-pjpg$&wid=1920&hei=1440" alt="profile image" class="profile-img">
+					<h1>Émonda ALR 4 Disc</h1>
+					<p class="bike-category">$1,599.99</p>
+					<p class="about">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+					</p>
+					<a href="#" class="btn1">Learn more</a>
+				</div>
+
+				<div class="card">
+					<img src="https://trek.scene7.com/is/image/TrekBicycleProducts/AllantPlus99S_20_30258_A_Primary?$responsive-pjpg$&wid=1920&hei=1440" alt="profile image" class="profile-img">
+					<h1>Allant+ 9.9S</h1>
+					<p class="bike-category">$5,999.99</p>
+					<p class="about">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+					</p>
+					<a href="#" class="btn1">Learn more</a>
+				</div>
+
+				<div class="card">
+					<img src="https://trek.scene7.com/is/image/TrekBicycleProducts/Powerfly5_20_30499_B_Primary?$responsive-pjpg$&wid=1920&hei=1440" alt="profile image" class="profile-img">
+					<h1>Powerfly 5</h1>
+					<p class="bike-category">$4,199.99</p>
+					<p class="about">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+					</p>
+					<a href="#" class="btn1">Learn more</a>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="global-cont" style="display: flex; align-items: center; justify-content: center; margin-top: 3rem;">
+	<a href="#" class="btn cart-btn" style="text-transform: uppercase;">Discover all</a>
+</div>
+
+
+
+
+	</section>
+
+
+
+
+	<section>
+		<div class="container">
+			<h1 class="heading">Equipment</h1>
+			<div class="card-wrapper">
+				<div class="card">
+					<img src="https://trek.scene7.com/is/image/TrekBicycleProducts/BontragerProFlatPack_21794_A_Primary?$responsive-pjpg$&wid=1920&hei=1440" alt="profile image" class="profile-img">
+					<h1>Bontrager Pro Flat Pack</h1>
+					<p class="bike-category">$49.99</p>
+					<p class="about">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+					</p>
+					<a href="#" class="btn1">Learn more</a>
+				</div>
+
+				<div class="card">
+					<img src="https://trek.scene7.com/is/image/TrekBicycleProducts/100StatusDHBMXHelmet_31398_A_Primary?$responsive-pjpg$&wid=1920&hei=1440" alt="profile image" class="profile-img">
+					<h1>100% Status DH/BMX Helmet</h1>
+					<p class="bike-category">$174.99</p>
+					<p class="about">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+					</p>
+					<a href="#" class="btn1">Learn more</a>
+				</div>
+
+				<div class="card">
+					<img src="https://trek.scene7.com/is/image/TrekBicycleProducts/BontragerDeluxeShockPump_28009_A_Primary?$responsive-pjpg$&wid=1920&hei=1440" alt="profile image" class="profile-img">
+					<h1>Bontrager Shock Pump</h1>
+					<p class="bike-category">$49.99</p>
+					<p class="about">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+					</p>
+					<a href="#" class="btn1">Learn more</a>
+				</div>
+
+				<div class="card">
+					<img src="https://trek.scene7.com/is/image/TrekBicycleProducts/BontragerCompMTB_22370_A_Profile?$responsive-pjpg$&wid=1920&hei=1440" alt="profile image" class="profile-img">
+					<h1>Bontrager Comp MTB Pedal Set</h1>
+					<p class="bike-category">$79.99</p>
+					<p class="about">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+					</p>
+					<a href="#" class="btn1">Learn more</a>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="global-cont" style="display: flex; align-items: center; justify-content: center; margin-top: 3rem;">
+	<a href="#" class="btn cart-btn" style="text-transform: uppercase;">Discover all</a>
+</div>
+
+
+
+
+	</section>
+
+<section class="subscribe-form">
+		<div class="subscribe">
+			<header class="sub-head" style="height: auto;">
+				<h1>Subscribe to get great offers</h1>
+			</header>
+			<footer class="sub-foot">
+				<input type="email" placeholder="Enter your email">
+				<button class="cart-btn">Jump in</button>
+			</footer>
+		</div>
+	</section>
+
+	<div class="footer-main-div">
+
+		<div class="footer-social-icons">
+			<ul>
+				<li><a href="#" target blank><i class="fab fa-facebook-f"></i></a></li>
+				<li><a href="#" target blank><i class="fab fa-twitter"></i></a></li>
+				<li><a href="#" target blank><i class="fab fa-instagram"></i></a></li>
+				<li><a href="#" target blank><i class="fab fa-youtube"></i></a></li>
+			</ul>
+		</div>
+
+		<div class="footer-menu">
+			<ul>
+				<li><a href="#">Shop</a></li>
+				<li><a href="#">Inside TREK</a></li>
+				<li><a href="#">Support</a></li>
+				<li><a href="#">Legal</a></li>
+			</ul>
+		</div>
+
+
+	</div>
+
+	<div class="footer-bottom">
+		<p>Designed by: <a href="http://nejra.xyz/">Nejra Turčinović</a></p>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="main.js"></script>
+	
+
+</body>
+</html>

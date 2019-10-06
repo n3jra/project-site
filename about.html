@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="URF-8">
+	<title>About</title>
+	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,800,900&display=swap" rel="stylesheet">
+
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		*, *:before, *:after {
+			box-sizing: inherit;
+		}
+
+		html {
+			font-family: 'Montserrat', sans-serif;
+			font-size: 10px;
+			color: #333;
+			box-sizing: border-box;
+		}
+
+		body {
+			overflow-x: hidden;
+		}
+
+		header {
+			width: 100%;
+			height: 100vh;
+			position: relative;
+		}
+
+		a {
+			text-decoration: none;
+			color: inherit;
+		}
+
+		img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+        }
+
+		.menu-toggle {
+			width: 5rem;
+			height: 5rem;
+			position: absolute;
+			top: 1rem;
+			left: 1rem;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+			outline: none;
+			display: none;
+			z-index: 999;
+		}
+
+		.menu-toggle i, .fa-times {
+			font-size: 3.5rem;
+		}
+
+		.fa-times {
+			display: none;
+			cursor: pointer;
+		}
+
+		nav {
+			position: relative;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			border-bottom: 1px solid rgba(0,0,0,.075);
+			z-index: 1000;
+		}
+
+		.logo {
+			width: 15rem;
+			box-sizing: content-box;
+			padding-left: 3rem;
+		}
+
+		.logo img {
+			display: block;
+			width: 100%;
+		}
+
+		nav ul {
+			height: 8rem;
+			list-style: none;
+			display: flex;
+			font-size: 1.6rem;
+		}
+
+		nav ul li {
+			padding: 0 3rem;
+			line-height: 8rem;
+			transition: background-color .5s;
+		}
+
+		nav ul li:hover {
+			background-color: rgba(0,0,0,.075);
+		}
+
+		.nav-right ul li {
+			border-right: 1px solid rgba(0,0,0,.075);
+		}
+
+		.nav-rigt ul li:nth-child(1) {
+			border-left: 1px solid rgba(0,0,0,.075);
+		}
+
+		.nav-right ul li:last-child {
+			border-right: none;
+		}
+
+		.nav-right i {
+			margin-left: 1rem;
+		}
+
+		.nav-right i:first-child {
+			margin-right: 0;
+		}
+
+		.main {
+			position: absolute;
+			display: flex;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+		}
+
+		.tone-1 {
+			background-color: #f7f7f6;
+			height: 100vh;
+			flex: 1;
+
+		}
+
+		.tone-2 {
+			background-color: #f7f7f6;
+			height: 100vh;
+			flex: 1;
+			position: relative; 
+		}
+
+
+		.tone-2 img {
+			width: 100%;
+			position: absolute;
+			top: 50%;
+			left: -15rem;
+			transform: translateY(-50%);
+		}
+
+		.product-info {
+			display: flex;
+			width: 90%;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			margin: 0 auto;
+			height: 100%;
+		}
+
+		.product-info h1 {
+			font-size: 4rem;
+			font-family: 'Montserrat', sans-serif;
+			letter-spacing: 1px;
+			margin-right: -3px;
+			font-weight : 700;
+			margin-bottom: 1rem;
+			text-align: center;
+			/*color: #3430AF;*/
+		}
+
+		.product-info p {
+			font-size: 1.8rem;
+			margin-bottom: 4rem;
+		}
+
+		.product-info h2 {
+			font-size: 2.5rem;
+			margin-bottom: 5rem;
+		}
+
+		.product-info h3 {
+			font-size: 2rem;
+		}
+
+		.btn {
+			display: flex;
+			padding: 2rem;
+			color: #f7f7f6;
+			font-size: 1.5rem;
+			font-weight: 500;
+			transition: all .5s;
+		}
+
+		.info-btns {
+			display: flex;
+		}
+
+		.discover-btn {
+			background-color: #a4a4a4;
+		}
+
+		.cart-btn {
+			background-color: #141110;
+		}
+
+		.discover-btn:hover, .cart-btn:hover {
+			box-shadow: 3px 1rem 2rem rgba(0,0,0,.3);
+			transform: translateY(-1rem);
+		}
+
+		@media screen and (max-width: 1200px) {
+			.tone-2 img {
+				left: -8rem;
+			}
+
+			.product-info h1 {
+				font-size: 3.5rem;
+				margin-bottom: 2rem;
+			}
+
+			.product-info p {
+				font-size: 1.5rem;
+				margin-bottom: 2rem;
+			}
+
+			.product-info h2 {
+				font-size: 2rem;
+				margin-bottom: 1rem;
+			}
+
+			.btn {
+				padding: 1.5rem;
+				font-size: 1rem;
+			}
+		}
+
+		@media screen and (max-width: 900px) {
+
+			.main {
+				flex-direction: column;
+			}
+			
+			.logo {
+				padding-left: 1.5rem;
+			}
+
+			nav ul {
+				height: 5rem;
+				font-size: 1.4rem;
+			}
+
+			nav ul li {
+				padding: 0 1.5rem;
+				line-height: 5rem;
+			}
+
+			.tone-2 img {
+				left: 0.6rem;
+			}
+		}
+
+		@media screen and (max-width: 600px) {
+
+
+			.tone-2 img {
+				left: 0.6rem;
+			}
+
+			.product-info p {
+				font-size: 1.2rem;
+			}
+
+			.product-info h1 {
+				font-size: 1.5rem;
+			}
+			.btn {
+				padding: 1rem;
+			}
+
+			nav {
+				display: flex;
+				border-bottom: none;
+				flex-direction: column;
+				width: 25rem;
+				height: 100vh;
+				background-color: #f7f7f6;
+				justify-content: space-around;
+				transform: translateX(-25rem);
+				transition: transform .5s;
+			}
+
+			nav ul {
+				height: initial;
+				display: block;
+				font-size: 2rem;
+				text-align: center;
+			}
+
+			nav ul li {
+				padding: 0;
+				line-height: initial;
+				margin-bottom: 2rem;
+			}
+
+			.logo {
+				padding: 0;
+			}
+
+			.nav-right ul li, .nav-right ul li:nth-child(1) {
+				border:none;
+			}
+
+			.menu-toggle {
+				display: flex;
+			}
+
+			.fa-times {
+				display: block;
+				position: absolute;
+				top: 2rem;
+				right: 2rem;
+			}
+
+			.active {
+				transform: translateX(0);
+			}
+
+			.overlay {
+				position: absolute;
+				width: 0;
+				height: 100vh;
+				background-color: rgba(0,0,0,.8);
+				z-index: 998;
+				opacity: 0;
+				transition: opacity .5s;
+			}
+
+			.overlay-menu-open {
+				width: 100%;
+				opacity: 1;
+			}
+
+		}
+
+		.google-map {
+			width: 100%;
+			box-shadow: .5rem .5rem 3rem rgba(0,0,0,0.2);
+		}
+
+	
+
+		@media screen and (max-width: 400px){
+			.main {
+				flex-direction: column;
+			}
+
+			.tone-2 img {
+				left: 0.6rem;
+			}
+
+			.product-info h1 {
+				font-size: 1rem;
+				margin-bottom: 1rem;
+			}
+
+			.product-info p {
+				font-size: 1rem;
+				margin-bottom: 1rem;
+			}
+
+			.product-info h2 {
+				font-size: 1.5rem;
+				margin-bottom: 1rem;
+			}
+
+			.product-info h3 {
+				font-size: 1rem;
+			}
+
+			.btn {
+				padding: .7rem;
+				font-size: .8rem;
+			}
+		}
+
+			section {
+			padding: 5rem 0;
+			background-color: #f7f7f6;
+		}
+
+		.heading {
+			text-transform: uppercase;
+			font-size: 3.5rem;
+			letter-spacing: 3px;
+			margin-right: -3px;
+			margin-bottom: 5rem;
+			text-align: center;
+			color: #333;
+			position: relative;
+		}
+
+		.heading::after {
+			content: "";
+			width: 10rem;
+			height: .8rem;
+			background-color: #141110;
+			position: absolute;
+			bottom: -2rem;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+
+		.footer-main-div {
+			width: 100%;
+			height: auto;
+			margin: auto;
+			background-color: #f7f7f6;
+			padding: 20px 0px;
+		}
+
+		.footer-social-icons {
+			width: 100%;
+			height: auto;
+			margin: auto;
+		}
+
+		.footer-social-icons ul {
+			margin: 0px;
+			padding: 0px;
+			text-align: center;
+		}
+
+		.footer-social-icons ul li {
+			display: inline-block;
+			width: 50px;
+			height: 50px;
+			margin: 0 10px;
+		}
+
+		.footer-social-icons ul li a {
+			color: #272727;
+			font-size: 25px;
+		}
+
+		.footer-social-icons ul li a i {
+			line-height: 50px;
+		}
+
+		.footer-menu {
+			width: 100%;
+			height: auto;
+			margin: auto;
+			margin-top: 20px;
+		}
+
+		.footer-menu ul {
+			margin: 0px;
+			padding: 0px;
+			text-align: center;
+		}
+
+		.footer-menu ul li {
+			display: inline-block;
+			margin: 0px 15px;
+		}
+
+		.footer-menu ul li a {
+			font-size: 1.5rem;
+			color: #272727;
+		}
+
+		.footer-bottom {
+			width: 100%;
+			height: auto;
+			margin: auto;
+			background: #272727;
+			padding: 10px;
+		}
+
+		.footer-bottom p{
+			font-family: 'Montserrat', sans-serif;
+			font-size: 1.5rem;
+			text-align: center;
+			color: #f7f7f6;
+		}
+
+		.footer-bottom p a {
+			color: #f7f7f6;
+			font-weight: 700;
+		}
+
+		.subscribe-form {
+			width: 100%;
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background: #272727;
+		}
+
+		.subscribe-form .subscribe {
+			background-color: #fff;
+			padding: 40px;
+			width: 100%;
+			max-width: 500px;
+			min-width: 200px;
+			text-align: center;
+			box-shadow: .5rem .5rem 3rem rgba(255,255,255,0.2);
+		}
+
+		.subscribe-form .subscribe header h1 {
+			font-size: 230%;
+			margin-top: 0;
+		}
+
+		.subscribe-form .subscribe section {
+			font-size: 15px;
+			color: #eee;
+		}
+
+		.subscribe-form .subscribe footer {
+			padding: 15px;
+		}
+
+		.subscribe-form .subscribe footer input {
+			border: unset;
+			background-color: #f7f7f6;
+			padding: 2rem;
+			width: 230px;
+			font-size: 1.5rem;
+			font-family: 'Raleway', sans-serif;
+		}
+
+		.subscribe-form .subscribe footer button {
+			border: unset;
+			padding: 2rem;
+			color: #f7f7f6;
+			font-size: 1.5rem;
+			font-weight: 500;
+			transition: all .5s;
+			font-family: 'Montserrat', sans-serif;
+			text-transform: uppercase;
+			cursor: pointer;
+		}
+
+		.subscribe-form .subscribe input:focus, .subscribe-form .subscribe button:focus {
+			outline: none;
+		}
+
+		@media screen and (max-width:720px) {
+			.main {
+				flex-direction: column;
+			}
+
+			tone-2 img {
+				left: 0.6px;
+			}
+
+			.product-info h1 {
+				font-size: 1.5rem;
+			}
+
+			.subscribe-form .subscribe {
+				margin: 0 2rem;
+				padding: 1.5rem;
+			}
+			.subscribe-form .subscribe footer input {
+				width: 20rem;
+				margin-bottom: 10px;
+			}
+
+			.subscribe-form .subscribe header h1 {
+			font-size: 1.5rem;
+			}
+		}
+
+		.map {
+			display: flex;
+		    width: 90%;
+		    flex-direction: column;
+		    align-items: center;
+		    justify-content: center;
+		    margin: 0 auto;
+		    height: 100%;
+		}
+
+	</style>
+
+
+	
+
+</head>
+<body>
+	<header>
+		<div class="menu-toggle">
+			<i class="fas fa-bars"></i>
+		</div>
+		<div class="overlay"></div>
+
+		<nav>
+			<i class="fas fa-times"></i>
+			<div class="logo">
+				<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/2018_Trek_logo_word_mark_wiki.svg/1280px-2018_Trek_logo_word_mark_wiki.svg.png" align="trek logo";">
+			</div>
+
+			<div class="nav-middle">
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="#">Bikes</a></li>
+					<li><a href="#">Equipment</a></li>
+					<li><a href="about.html">Our story</a></li>
+					<li><a href="#">Contact</a></li>
+				</ul>
+			</div>
+
+			<div class="nav-right">
+				<ul>
+					<li><a href="#"><i class="fas fa-search"></i></a></li>
+					<li><a href="login-form.html"><i class="fas fa-user"></i> Account</a></li>
+					<li><a href="#"><i class="fas fa-cart"></i> Cart</a></li>
+				</ul>
+			</div>
+		</nav>
+
+		<div class="main">
+			<div class="tone-1">
+				<div class="product-info">
+					<h3>Made in USA</h3>
+					<h1>Founded in Waterloo, Wisconsin in 1976</h1>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					<!-- <h2>Made in USA</h2> -->
+					<div class="info-btns">
+						<a href="#" class="btn discover-btn">Read more</a>
+					</div>
+				</div>
+
+
+
+
+			</div>
+
+			<div class="tone-2">
+				<div class="map">
+				<iframe class="google-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d23273.942710975778!2d-89.0075404858757!3d43.1834152149565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8806882c59fa7921%3A0xcc1b9fd4dd281ab3!2sWaterloo%2C%20WI%2053594%2C%20USA!5e0!3m2!1sen!2sba!4v1570361319895!5m2!1sen!2sba" width="600" height="300" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+			</div>
+
+			</div>
+
+		</div>
+
+	</header>
+
+<section class="subscribe-form">
+		<div class="subscribe">
+			<header class="sub-head" style="height: auto;">
+				<h1>Subscribe to get great offers</h1>
+			</header>
+			<footer class="sub-foot">
+				<input type="email" placeholder="Enter your email">
+				<button class="cart-btn">Jump in</button>
+			</footer>
+		</div>
+	</section>
+
+	<div class="footer-main-div">
+
+		<div class="footer-social-icons">
+			<ul>
+				<li><a href="#" target blank><i class="fab fa-facebook-f"></i></a></li>
+				<li><a href="#" target blank><i class="fab fa-twitter"></i></a></li>
+				<li><a href="#" target blank><i class="fab fa-instagram"></i></a></li>
+				<li><a href="#" target blank><i class="fab fa-youtube"></i></a></li>
+			</ul>
+		</div>
+
+		<div class="footer-menu">
+			<ul>
+				<li><a href="#">Shop</a></li>
+				<li><a href="#">Inside TREK</a></li>
+				<li><a href="#">Support</a></li>
+				<li><a href="#">Legal</a></li>
+			</ul>
+		</div>
+
+
+	</div>
+
+	<div class="footer-bottom">
+		<p>Designed by: <a href="http://nejra.xyz/">Nejra Turčinović</a></p>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="main.js"></script>
+
+</body>
+</html>
